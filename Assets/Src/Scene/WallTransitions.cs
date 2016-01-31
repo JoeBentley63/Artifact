@@ -5,7 +5,14 @@ public class WallTransitions : MonoBehaviour
 {
 
     public List<int> cameraPositions;
-    public int currentIndex = 0;
+    public List<Vector3> cameraLocations;
+    public int currentIndex = 3;
+    public ObjectRotator objectRotator;
+    void Start()
+    {
+        moveScreen();
+        objectRotator = this.gameObject.GetComponent<ObjectRotator>();
+    }
 
     public void moveRight()
     {
@@ -26,6 +33,8 @@ public class WallTransitions : MonoBehaviour
     private void moveScreen()
     {
         iTween.RotateTo(this.gameObject, new Vector3(0, this.cameraPositions[currentIndex], 0), 1f);
+        iTween.MoveTo(this.gameObject, this.cameraLocations[currentIndex], 1f);
+        if(currentIndex == 4) objectRotator.atDesk = true; else objectRotator.atDesk = false;
     }
 
     void Update()

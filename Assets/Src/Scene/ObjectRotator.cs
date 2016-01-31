@@ -5,16 +5,25 @@ public class ObjectRotator : MonoBehaviour {
 
     public GameObject modelToRotate;
     private Vector3 originalPosition;
-    private Vector3 originalRotation;
+    private Quaternion originalRotation;
+    private Vector3 originalScale;
+    private Transform originalTransform;
     private Camera thisCamera;
     private bool isFocusedOnObject = false;
     private Vector3 previousMousePosition = Vector3.zero;
+    private int newFarClippingPlane = 100;
+    public GameObject leftArrow;
+    public GameObject rightArrow;
+    public GameObject showHideButton;
+    public float zoomOffset = 0f;
+    public bool atDesk = false;
+
+    public GameObject cube;
+    public FadeAndDelete fadeAndDelete;
     void Start()
     {
-        this.originalPosition = modelToRotate.transform.position;
-        this.originalRotation = new Vector3(modelToRotate.transform.rotation.x, modelToRotate.transform.rotation.y, modelToRotate.transform.rotation.z);
         this.thisCamera = this.gameObject.GetComponent<Camera>();
-        pickUpItem();
+        showUIArrows();
     }
 
     void Update()
@@ -22,27 +31,79 @@ public class ObjectRotator : MonoBehaviour {
         Vector3 currentMousePosition = Input.mousePosition;
         if (isFocusedOnObject)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.tag == "endGame")
+                    {
+                        cube.GetComponent<Animator>().enabled = true;
+                        fadeAndDelete.StartFade();
+                    }
+                }
+            }
             if (Input.GetMouseButton(0))
             {
                 float RotationSpeed = 500;
                 modelToRotate.transform.Rotate(0, (-Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime), (Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime), Space.World);
             }
+            if((Input.mouseScrollDelta.y < 0f && zoomOffset + Input.mouseScrollDelta.y > -20) || (Input.mouseScrollDelta.y + Input.mouseScrollDelta.y > 0f && zoomOffset < 40f))
+            {
+                modelToRotate.transform.localScale = modelToRotate.transform.localScale * (1 + Input.mouseScrollDelta.y * .04f);
+                zoomOffset += Input.mouseScrollDelta.y;
+            }
+            
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                findClickedGameObject();
+            }
         }
         previousMousePosition = currentMousePosition;
     }
 
+    void findClickedGameObject()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.tag == "Interactable"){
+                this.modelToRotate = hit.transform.gameObject;
+                this.originalPosition = modelToRotate.transform.position;
+                this.originalRotation = modelToRotate.transform.localRotation;
+                this.originalScale = modelToRotate.transform.localScale;
+                this.originalTransform = modelToRotate.transform;
+                pickUpItem();
+            }
+        }
+    }
+
     void pickUpItem()
     {
-        this.thisCamera.orthographic = false;
-        iTween.MoveTo(modelToRotate, this.gameObject.transform.position + this.gameObject.transform.forward * 10, 3f);
-        iTween.RotateTo(modelToRotate, new Vector3(0, 0, 0), 3f);
+        iTween.MoveTo(modelToRotate, this.gameObject.transform.position + this.gameObject.transform.forward * 4, 1f);
+        iTween.RotateTo(modelToRotate, new Vector3(0, 0, 0), 1f);
+        iTween.ScaleBy(modelToRotate, new Vector3(.20f, .20f, .20f), 1f);
+        newFarClippingPlane = 35;
+        if (atDesk) newFarClippingPlane = 100;
         iTween.ValueTo(this.gameObject, iTween.Hash(
             "from", 100,
-            "to", 20,
-            "time", 3f,
+            "to", newFarClippingPlane,
+            "time", .1f,
             "onupdate", "farPlaneChangeOnUpdate"
             ));
         isFocusedOnObject = true;
+        hideUIArrows();
+        this.zoomOffset = 0f;
+    }
+
+    private void farPlaneChangeOnUpdate(Quaternion newValue)
+    {
+        this.modelToRotate.transform.localRotation = newValue;
     }
 
     private void farPlaneChangeOnUpdate(int newValue)
@@ -50,24 +111,32 @@ public class ObjectRotator : MonoBehaviour {
         this.thisCamera.farClipPlane = newValue;
     }
 
-    public void onPutBackFinished()
-    {
-        this.thisCamera.orthographic = true;
-    }
-
     public void putObjectBack()
     {
-        iTween.MoveTo(modelToRotate, originalPosition * 1, 3f);
-        iTween.RotateTo(modelToRotate, originalRotation, 3f);
+        iTween.MoveTo(modelToRotate, originalPosition * 1, 1f);
+        modelToRotate.transform.localRotation = originalRotation;
+        iTween.ScaleTo(modelToRotate, originalScale, 1f);
         iTween.ValueTo(this.gameObject, iTween.Hash(
-            "from", 20,
+            "from", 60,
             "to", 100,
-            "time", .2f,
-            "onupdate", "farPlaneChangeOnUpdate",
-            "oncomplete", "onPutBackFinished"
+            "time", .5f,
+            "onupdate", "farPlaneChangeOnUpdate"
             ));
-
         isFocusedOnObject = false;
+        showUIArrows();
     }
-	   
+
+    private void hideUIArrows()
+    {
+        leftArrow.SetActive(false);
+        rightArrow.SetActive(false);
+        showHideButton.SetActive(true);
+    }
+
+    private void showUIArrows()
+    {
+        leftArrow.SetActive(true);
+        rightArrow.SetActive(true);
+        showHideButton.SetActive(false);
+    }
 }

@@ -1,0 +1,181 @@
+fileFormatVersion: 2
+guid: 321257c02c42dc14c982700a09904fc0
+timeCreated: 1454172967
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Back_Geo
+    100004: BackBotLeft_Geo
+    100006: BackBotRigh_Geo
+    100008: BackButton_Geo
+    100010: BackTopLeft_Geo
+    100012: BackTopRigh_Geo
+    100014: bottom
+    100016: Bottom_Geo
+    100018: BottomButton_Geo
+    100020: Front_Geo
+    100022: FrontBotLeft_Geo
+    100024: FrontBotRight_Geo
+    100026: FrontButton_Geo
+    100028: FrontTopLeft_Geo
+    100030: FrontTopRight_Geo
+    100032: group1
+    100034: left
+    100036: Left_Geo
+    100038: LeftButton_Geo
+    100040: LeftButton_Geo1
+    100042: Right_Geo
+    100044: Top_Geo
+    100046: TopButton_Geo
+    400000: //RootNode
+    400002: Back_Geo
+    400004: BackBotLeft_Geo
+    400006: BackBotRigh_Geo
+    400008: BackButton_Geo
+    400010: BackTopLeft_Geo
+    400012: BackTopRigh_Geo
+    400014: bottom
+    400016: Bottom_Geo
+    400018: BottomButton_Geo
+    400020: Front_Geo
+    400022: FrontBotLeft_Geo
+    400024: FrontBotRight_Geo
+    400026: FrontButton_Geo
+    400028: FrontTopLeft_Geo
+    400030: FrontTopRight_Geo
+    400032: group1
+    400034: left
+    400036: Left_Geo
+    400038: LeftButton_Geo
+    400040: LeftButton_Geo1
+    400042: Right_Geo
+    400044: Top_Geo
+    400046: TopButton_Geo
+    2300000: Back_Geo
+    2300002: BackBotLeft_Geo
+    2300004: BackBotRigh_Geo
+    2300006: BackButton_Geo
+    2300008: BackTopLeft_Geo
+    2300010: BackTopRigh_Geo
+    2300012: Bottom_Geo
+    2300014: BottomButton_Geo
+    2300016: Front_Geo
+    2300018: FrontBotLeft_Geo
+    2300020: FrontBotRight_Geo
+    2300022: FrontButton_Geo
+    2300024: FrontTopLeft_Geo
+    2300026: FrontTopRight_Geo
+    2300028: Left_Geo
+    2300030: LeftButton_Geo
+    2300032: LeftButton_Geo1
+    2300034: Right_Geo
+    2300036: Top_Geo
+    2300038: TopButton_Geo
+    3300000: Back_Geo
+    3300002: BackBotLeft_Geo
+    3300004: BackBotRigh_Geo
+    3300006: BackButton_Geo
+    3300008: BackTopLeft_Geo
+    3300010: BackTopRigh_Geo
+    3300012: Bottom_Geo
+    3300014: BottomButton_Geo
+    3300016: Front_Geo
+    3300018: FrontBotLeft_Geo
+    3300020: FrontBotRight_Geo
+    3300022: FrontButton_Geo
+    3300024: FrontTopLeft_Geo
+    3300026: FrontTopRight_Geo
+    3300028: Left_Geo
+    3300030: LeftButton_Geo
+    3300032: LeftButton_Geo1
+    3300034: Right_Geo
+    3300036: Top_Geo
+    3300038: TopButton_Geo
+    4300000: BackTopLeft_Geo
+    4300002: BackTopRigh_Geo
+    4300004: FrontTopRight_Geo
+    4300006: FrontTopLeft_Geo
+    4300008: FrontBotLeft_Geo
+    4300010: FrontBotRight_Geo
+    4300012: BackBotLeft_Geo
+    4300014: BackBotRigh_Geo
+    4300016: Front_Geo
+    4300018: Back_Geo
+    4300020: Right_Geo
+    4300022: Top_Geo
+    4300024: Bottom_Geo
+    4300026: Left_Geo
+    4300028: TopButton_Geo
+    4300030: BottomButton_Geo
+    4300032: FrontButton_Geo
+    4300034: BackButton_Geo
+    4300036: LeftButton_Geo
+    4300038: LeftButton_Geo1
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
