@@ -101,11 +101,6 @@ public class ObjectRotator : MonoBehaviour {
         this.zoomOffset = 0f;
     }
 
-    private void farPlaneChangeOnUpdate(Quaternion newValue)
-    {
-        this.modelToRotate.transform.localRotation = newValue;
-    }
-
     private void farPlaneChangeOnUpdate(int newValue)
     {
         this.thisCamera.farClipPlane = newValue;
